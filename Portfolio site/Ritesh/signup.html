@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up | Elegant Access</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --primary: #2c1d1c;
+      --secondary: #7a5c50;
+      --accent: #c19a6b;
+      --light: #f5f1e8;
+      --dark: #1a1a1a;
+      --success: #4caf50;
+      --error: #f44336;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 125vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5f1e8 0%, #e8dfca 100%);
+      color: var(--dark);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* Animated background elements */
+    .bg-shape-1, .bg-shape-2 {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(193, 154, 107, 0.15);
+      z-index: -1;
+    }
+    
+    .bg-shape-1 {
+      width: 500px;
+      height: 500px;
+      top: -250px;
+      left: -100px;
+      animation: float 15s ease-in-out infinite;
+    }
+    
+    .bg-shape-2 {
+      width: 400px;
+      height: 400px;
+      bottom: -200px;
+      right: -100px;
+      animation: float 18s ease-in-out infinite reverse;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+    
+    .container {
+      display: flex;
+      max-width: 1100px;
+      width: 95%;
+      background: rgba(255, 253, 249, 0.95);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+      backdrop-filter: blur(12px);
+      transform: scale(0.95);
+      opacity: 0;
+      animation: fadeUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    .form-section {
+      flex: 1;
+      padding: 50px 45px;
+      animation: floatIn 1s ease forwards;
+      position: relative;
+    }
+    
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .logo {
+      position: absolute;
+      top: 25px;
+      left: 35px;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo i {
+      margin-right: 8px;
+      color: var(--accent);
+    }
+    
+    .form-section h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      animation: fadeSlide 1s ease forwards;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .form-section h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-section p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      flex: 1;
+      position: relative;
+    }
+    
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 8px;
+      transition: var(--transition);
+    }
+    
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 42px;
+      color: var(--secondary);
+      transition: var(--transition);
+    }
+    
+    input[type="text"],
+    input[type="email"], 
+    input[type="password"] {
+      width: 100%;
+      padding: 15px 15px 15px 45px;
+      border: 1.5px solid #e8e2d5;
+      border-radius: 12px;
+      font-size: 15px;
+      margin-bottom: 5px;
+      background: #faf8f4;
+      transition: var(--transition);
+      color: var(--dark);
+    }
+    
+    input:focus {
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 15px rgba(193, 154, 107, 0.3);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    
+    input:focus + .input-icon {
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 15px;
+      top: 42px;
+      cursor: pointer;
+      color: #aaa;
+      transition: var(--transition);
+    }
+    
+    .password-toggle:hover {
+      color: var(--secondary);
+    }
+    
+    .password-strength {
+      height: 5px;
+      border-radius: 3px;
+      margin-top: 5px;
+      background: #eee;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .password-strength-bar {
+      height: 100%;
+      width: 0;
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+    
+    .password-strength-text {
+      font-size: 12px;
+      margin-top: 5px;
+      color: #777;
+    }
+    
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      margin: 20px 0;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .terms input {
+      margin-right: 10px;
+      margin-top: 3px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+    
+    .terms a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .terms a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    
+    .btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 25px 0;
+      font-size: 14px;
+      color: #777;
+      position: relative;
+    }
+    
+    .divider div {
+      flex-grow: 1;
+      height: 1px;
+      background: #e8e2d5;
+      transition: var(--transition);
+    }
+    
+    .divider:hover div {
+      background: var(--accent);
+    }
+    
+    .divider span {
+      margin: 0 15px;
+    }
+    
+    .social-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+    
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      border: 1.5px solid #e8e2d5;
+      border-radius: 10px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .social-btn:hover {
+      background: #faf8f4;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+      border-color: var(--accent);
+    }
+    
+    .social-btn i {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    
+    .google-btn i {
+      color: #DB4437;
+    }
+    
+    .apple-btn i {
+      color: #000;
+    }
+    
+    .login-link {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .login-link a {
+      color: var(--secondary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .login-link a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    
+    .login-link a:hover {
+      color: var(--accent);
+    }
+    
+    .login-link a:hover::after {
+      width: 100%;
+    }
+    
+    .image-section {
+      flex: 1;
+      background: url("https://images.unsplash.com/photo-1550147760-44c9966d6bc7?auto=format&fit=crop&w=800&q=80") center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+      animation: zoomFade 2s ease forwards;
+    }
+    
+    .image-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(44, 29, 28, 0.7) 0%, rgba(122, 92, 80, 0.5) 100%);
+    }
+    
+    .image-content {
+      position: absolute;
+      bottom: 40px;
+      left: 30px;
+      color: white;
+      z-index: 2;
+      max-width: 80%;
+      animation: fadeInUp 2s ease forwards;
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .image-content h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .image-content p {
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+    
+    @keyframes zoomFade {
+      from { opacity: 0; transform: scale(1.2); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    /* Loading animation for form */
+    .form-loading {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 253, 249, 0.9);
+      z-index: 10;
+      border-radius: 24px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Responsive design */
+    @media (max-width: 992px) {
+      .container {
+        max-width: 700px;
+      }
+      
+      .form-section {
+        padding: 40px 30px;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        max-width: 450px;
+        margin: 20px;
+      }
+      
+      .image-section {
+        display: none;
+      }
+      
+      .social-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .form-section {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background shapes -->
+  <div class="bg-shape-1"></div>
+  <div class="bg-shape-2"></div>
+  
+  <div class="container">
+    <!-- Loading overlay -->
+    <div class="form-loading">
+      <div class="loader"></div>
+      <p>Creating your account...</p>
+    </div>
+    
+    <!-- Left: Form -->
+    <div class="form-section">
+      <div class="logo">
+        <i class="fas fa-gem"></i>
+        <span>ElegantAccess</span>
+      </div>
+      
+      <h1>Create an Account</h1>
+      <p>Join our community and start your journey with us today.</p>
+      
+      <form id="signupForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" id="firstName" placeholder="Enter your first name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" id="lastName" placeholder="Enter your last name" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <i class="fas fa-envelope input-icon"></i>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <i class="fas fa-lock input-icon"></i>
+          <input type="password" id="password" placeholder="Create a strong password" required>
+          <i class="fas fa-eye password-toggle" id="passwordToggle"></i>
+          
+          <div class="password-strength">
+            <div class="password-strength-bar" id="passwordStrengthBar"></div>
+          </div>
+          <div class="password-strength-text" id="passwordStrengthText">Password strength</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <i class="fas fa-lock input-icon"></i>
+          <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        
+        <div class="terms">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+        </div>
+        
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+      
+      <div class="divider">
+        <div></div>
+        <span>or sign up with</span>
+        <div></div>
+      </div>
+      
+      <div class="social-buttons">
+        <button class="social-btn google-btn">
+          <i class="fab fa-google"></i>
+          <span>Google</span>
+        </button>
+        
+        <button class="social-btn apple-btn">
+          <i class="fab fa-apple"></i>
+          <span>Apple</span>
+        </button>
+      </div>
+      
+      <p class="login-link">Already have an account? <a href="login.html">Log in here</a></p>
+    </div>
+    
+    <!-- Right: Image -->
+    <div class="image-section">
+      <div class="image-content">
+        <h2>Join Our Community</h2>
+        <p>Become part of our growing community and unlock exclusive features and benefits.</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Password visibility toggle
+      const passwordToggle = document.getElementById('passwordToggle');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+      
+      passwordToggle.addEventListener('click', function() {
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          confirmPasswordInput.type = 'text';
+          passwordToggle.classList.remove('fa-eye');
+          passwordToggle.classList.add('fa-eye-slash');
+        } else {
+          passwordInput.type = 'password';
+          confirmPasswordInput.type = 'password';
+          passwordToggle.classList.remove('fa-eye-slash');
+          passwordToggle.classList.add('fa-eye');
+        }
+      });
+      
+      // Password strength meter
+      const passwordStrengthBar = document.getElementById('passwordStrengthBar');
+      const passwordStrengthText = document.getElementById('passwordStrengthText');
+      
+      passwordInput.addEventListener('input', function() {
+        const password = passwordInput.value;
+        let strength = 0;
+        let message = '';
+        let barColor = '';
+        
+        if (password.length > 0) {
+          // Check password strength
+          if (password.length < 6) {
+            strength = 25;
+            message = 'Too short';
+            barColor = '#f44336'; // Red
+          } else if (password.length < 8) {
+            strength = 50;
+            message = 'Weak';
+            barColor = '#ff9800'; // Orange
+          } else if (password.match(/[a-z]/) && password.match(/[A-Z]/) && password.match(/[0-9]/)) {
+            strength = 100;
+            message = 'Strong';
+            barColor = '#4caf50'; // Green
+          } else {
+            strength = 75;
+            message = 'Medium';
+            barColor = '#ffc107'; // Yellow
+          }
+        }
+        
+        passwordStrengthBar.style.width = strength + '%';
+        passwordStrengthBar.style.background = barColor;
+        passwordStrengthText.textContent = message ? 'Password strength: ' + message : 'Password strength';
+        passwordStrengthText.style.color = barColor;
+      });
+      
+      // Form submission
+      const signupForm = document.getElementById('signupForm');
+      const loadingOverlay = document.querySelector('.form-loading');
+      
+      signupForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const terms = document.getElementById('terms').checked;
+        
+        // Simple validation
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+          showError('Please fill in all fields');
+          return;
+        }
+        
+        if (!isValidEmail(email)) {
+          showError('Please enter a valid email address');
+          return;
+        }
+        
+        if (password !== confirmPassword) {
+          showError('Passwords do not match');
+          return;
+        }
+        
+        if (!terms) {
+          showError('Please accept the terms and conditions');
+          return;
+        }
+        
+        // Show loading animation
+        loadingOverlay.style.display = 'flex';
+        
+        // Simulate signup process
+        setTimeout(function() {
+          loadingOverlay.style.display = 'none';
+          // In a real application, you would handle the actual signup here
+          alert('Account created successfully! Redirecting to login...');
+        }, 2000);
+      });
+      
+      // Helper functions
+      function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+      
+      function showError(message) {
+        // Create error element if it doesn't exist
+        let errorElement = document.querySelector('.error-message');
+        if (!errorElement) {
+          errorElement = document.createElement('div');
+          errorElement.className = 'error-message';
+          errorElement.style.color = 'var(--error)';
+          errorElement.style.fontSize = '14px';
+          errorElement.style.marginTop = '10px';
+          errorElement.style.padding = '10px';
+          errorElement.style.backgroundColor = 'rgba(244, 67, 54, 0.1)';
+          errorElement.style.borderRadius = '8px';
+          signupForm.appendChild(errorElement);
+        }
+        
+        errorElement.textContent = message;
+        
+        // Remove error after 5 seconds
+        setTimeout(() => {
+          errorElement.remove();
+        }, 5000);
+      }
+    });
+  </script>
+</body>
+</html>

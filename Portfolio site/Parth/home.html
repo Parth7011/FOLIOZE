@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folioze</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="home.css">
+
+</head>
+<body>
+    <div class="curtain"></div>
+
+    <header class="header">
+        <div class="nav-links-left">
+            <a href="#showcase">Services</a>
+            <a href="#">Features</a>
+            <a href="#">Blog</a>
+            <a href="/Parth/contact.html">Contact</a>
+        </div>
+        
+        <div class="logo">
+            <h1>Folioze</h1>
+        </div>
+
+        <div class="nav-links-right">
+            <a href="#testimonials">About</a>
+             <a href="/RAHUL 1610/login.html"><button class="get-started-btn">Get Started</button></a>
+            <!-- New Profile Menu -->
+            <div class="profile-menu">
+                <button id="profileBtn" class="profile-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div id="profileDropdown" class="profile-dropdown-content">
+                    <a href="#"><i class="fa-solid fa-user icon"></i> Profile</a>
+                    <a href="/Ritesh/dashboard.html"><i class="fa-solid fa-gauge-high icon"></i> Dashboard</a>
+                    <a href="#"><i class="fa-solid fa-folder-open icon"></i> My Projects</a>
+                    <a href="#"><i class="fa-solid fa-gear icon"></i> Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa-solid fa-right-from-bracket icon"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+
+    <main class="hero-section">
+        <h2>
+            <span id="typing-text"></span>
+            <span class="cursor"></span>
+        </h2>
+        <p>
+            All-in-one platform to plan, collaborate, and deliver — faster and smarter.
+        </p>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="aiSearchInput" placeholder="Search by skill, role, or keyword">
+                <button id="aiSearchButton" class="ai-search-btn">Find Projects</button>
+            </div>
+            <div class="search-tags">
+                <span>Browse by specialization</span>
+                <div class="tags-container">
+                    <button class="active">All</button>
+                    <button>UI/UX Designer</button>
+                    <button>Software Developer</button>
+                    <button>Data Scientist</button>
+                    <button>Product Manager</button>
+                    <button>Motion Designer</button>
+                    <button>Marketing Specialist</button>
+                    <button>Content Creator</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="feature-cards-section">
+        <h2 class="section-title">Discover What Makes Us Different.</h2>
+        <p class="section-subtitle">Powerful features designed to help you stand out and succeed.</p>
+        <div class="feature-grid">
+            <div class="feature-card feature-card--large">
+                <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop');"></div>
+                <div class="card-content-overlay">
+                    <div class="card-category">Software Development</div>
+                    <h3 class="card-title">From Code to Creation.</h3>
+                    <a href="/RAHUL/trial2.html" class="card-link">Explore Development Portfolios →</a>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="card-background" style="background-image: url('https://i.pinimg.com/736x/d1/e7/db/d1e7db404d3d79fe6d3c44968bf33733.jpg');"></div>
+                <div class="card-content-overlay">
+                    <div class="card-category">UI/UX Design</div>
+                    <h3 class="card-title">Design User-Centric Experiences.</h3>
+                    <a href="/RAHUL/trial.html" class="card-link">See Design Portfolios →</a>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="card-background" style="background-image: url('https://i.pinimg.com/1200x/22/23/3a/22233a273780452686fd092b9d5f555c.jpg');"></div>
+                <div class="card-content-overlay">
+                    <div class="card-category">Data Science</div>
+                    <h3 class="card-title">Uncover Insights with Data.</h3>
+                    <a href="#" class="card-link">Discover Data Science →</a>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="card-background" style="background-image: url('https://i.pinimg.com/736x/b2/ba/8e/b2ba8eb69ea07608089a7308dd67599e.jpg');"></div>
+                <div class="card-content-overlay">
+                    <div class="card-category">Product Management</div>
+                    <h3 class="card-title">Lead Products from Idea to Launch.</h3>
+                    <a href="#" class="card-link">See Product Management Portfolios→</a>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="card-background" style="background-image: url('https://i.pinimg.com/736x/be/55/39/be5539af9262dbd3e6d941d073cae913.jpg');"></div>
+                <div class="card-content-overlay">
+                    <div class="card-category">Digital Marketing</div>
+                    <h3 class="card-title">Master the Art of Digital Growth.</h3>
+                    <a href="#" class="card-link">View Marketing Portfolios →</a>
+                </div>
+            </div>
+             <div class="feature-card feature-card--large">
+                <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop');"></div>
+                <div class="card-content-overlay">
+                    <div class="card-category">Our Full Catalog</div>
+                    <h3 class="card-title">Find Your Perfect Portfolio.</h3>
+                    <a href="#" class="card-link">Browse All Portfolios →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Testimonials Section -->
+    <section class="testimonials-section-v2" id="testimonials">
+        <div class="testimonials-container-v2">
+            <div class="testimonials-text-content">
+                <svg class="animated-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path class="star-path" d="M20,50 Q40,20 60,50 T100,50" stroke="#8b5e3c" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <path d="M85 40 L88.53 47.93 L97.06 47.93 L90.26 52.86 L92.79 60.79 L85 55.86 L77.21 60.79 L79.74 52.86 L72.94 47.93 L81.47 47.93 Z" fill="#d4c1a5"/>
+                </svg>
+                <h2>What Our Customers Says</h2>
+                <p>Relation so in confined smallest children unpacked delicate. Why sir end believe uncivil respect. Always get adieus nature day course for common.</p>
+                <button class="view-more-btn">View More</button>
+            </div>
+            <div class="testimonials-cards-v2">
+                <div class="testimonial-card-v2">
+                    <div class="author-avatar-v2" style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg');"></div>
+                    <div class="card-content-v2">
+                        <div class="name">Mehwish</div>
+                        <p>Compliment interested discretion estimating on stimulated apartments oh.</p>
+                    </div>
+                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                </div>
+                <div class="testimonial-card-v2 highlight">
+                    <div class="author-avatar-v2" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
+                    <div class="card-content-v2">
+                        <div class="name">Elizabeth Jeff</div>
+                        <p>Dear so sing when in find read of call. As distrusts behaviour abilities defective is.</p>
+                    </div>
+                     <i class="fa-solid fa-quote-right quote-icon"></i>
+                </div>
+                <div class="testimonial-card-v2">
+                    <div class="author-avatar-v2" style="background-image: url('https://randomuser.me/api/portraits/women/21.jpg');"></div>
+                    <div class="card-content-v2">
+                        <div class="name">Emily Thomas</div>
+                        <p>Never at water me might. On formed merits hunted unable merely by mr whence or.</p>
+                    </div>
+                     <i class="fa-solid fa-quote-right quote-icon"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dream-team-section">
+        <div class="dream-team-container">
+            <div class="team-grid">
+                <div class="team-card profile-card card-mike">
+                    <img src="https://i.pinimg.com/736x/0e/ea/9a/0eea9aec44724c18c2dca08d245f9811.jpg" alt="Mike, Frontend Dev">
+                    <div class="profile-info">Mike - Frontend Dev</div>
+                </div>
+                <div class="team-card text-card card-quick">
+                    <h3>Quick and adaptable</h3>
+                    <p>Hire within a mere 72 hours. Easily adjust your team size from month to month as required.</p>
+                </div>
+                <div class="team-card profile-card card-latisha">
+                     <img src="https://i.pinimg.com/1200x/e1/f7/80/e1f78072cb65663ad41b03209320195c.jpg" alt="Stacy, Mobile Dev">
+                     <div class="profile-info">Latisha - Mobile Dev</div>
+                </div>
+                <div class="team-card text-card card-talent">
+                     <h3>Remote Talent Pool</h3>
+                     <p>Pre-vetted remote developers, designers, and product managers.</p>
+                </div>
+                <div class="team-card profile-card card-asger">
+                     <img src="https://i.pinimg.com/736x/81/2a/44/812a441ef48e07083e93072dd56156bf.jpg" alt="Asger, UI/UX Designer">
+                     <div class="profile-info">Asger - UI/UX Designer</div>
+                </div>
+                <div class="team-card text-card card-legal">
+                    <h3>Rest assured</h3>
+                    <p>There are no crazy fees or legal hassle to worry about.</p>
+                </div>
+            </div>
+            <div class="team-intro-content">
+                <h2>Build your dream team today.</h2>
+                <p>Unlock success with our handpicked dream team of experts. Hire now for unparalleled results.</p>
+                <div class="cta-container">
+                    <button class="cta-btn">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        Hiring? Book a call
+                    </button>
+                    <div class="avatar-stack">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User avatar">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User avatar">
+                        <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="User avatar">
+                        <div class="avatar-more">+728</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section" id="showcase">
+        <div class="card-content">
+            <h1>Showcase your best work and get discovered</h1>
+            <p>Folioze is the place for creative professionals to host their portfolios and connect with recruiters.</p>
+            <div class="buttons">
+                <button class="btn-primary">Start Browsing Portfolios →</button>
+                <button class="btn-secondary">Publish Your Portfolio →</button>
+            </div>
+        </div>
+    </section>
+
+   <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">Folioze</div>
+                    <p class="footer-description">
+                        Empowering creators to showcase their best work and connecting talent with opportunities through beautiful, professional portfolios.
+                    </p>
+                    <div class="contact-info">
+                        <a href="mailto:hello@folioze.com" class="contact-item">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            hello@folioze.com
+                        </a>
+                        <a href="tel:+15551234567" class="contact-item">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                            </svg>
+                            +1 (555) 123-4567
+                        </a>
+                        <div class="contact-item">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                            </svg>
+                            San Francisco, CA
+                        </div>
+                    </div>
+                     <div class="social-links">
+                        <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                        <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+                        <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.347-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.161-1.499-.699-2.436-2.888-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.357-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/></svg></a>
+                        <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Platform</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Browse Portfolios</a></li>
+                        <li><a href="#">For Creators</a></li>
+                        <li><a href="#">For Recruiters</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Creator Tools</a></li>
+                        <li><a href="#">Portfolio Builder</a></li>
+                        <li><a href="/Ritesh/employer.html">Recruiter Portal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Templates</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Stay Updated</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input">
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2025 Folioze. All rights reserved.</div>
+                <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+    
+    <div id="custom-alert" class="custom-alert">Thank you for subscribing!</div>
+
+<script>
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Curtain animation
+    const curtain = document.querySelector(".curtain");
+    document.body.style.overflow = "hidden"; // Hide overflow while curtain is active
+    
+    setTimeout(() => {
+        if (curtain) {
+           curtain.classList.add("up");
+        }
+        document.body.style.overflow = "auto";
+    }, 500); // delay before curtain goes up
+    
+    // JavaScript for the typing effect
+    const textArray = ["Streamline Your Team,", "Supercharge Your Workflow"];
+    const typingTextElement = document.getElementById("typing-text");
+    let lineIndex = 0;
+    let charIndex = 0;
+    
+    function typeWriter() {
+        if (typingTextElement && lineIndex < textArray.length) {
+            const currentLine = textArray[lineIndex];
+            if (charIndex < currentLine.length) {
+                typingTextElement.innerHTML += currentLine.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                typingTextElement.innerHTML += "<br>";
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(typeWriter, 500);
+            }
+        }
+    }
+    
+    typeWriter(); // Start the typing effect
+
+    // Mobile menu functionality
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('closeBtn');
+    const profileBtn = document.getElementById('profileBtn');
+    const profileDropdown = document.getElementById('profileDropdown');
+
+    
+    if (menuBtn && sidebar) {
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent click from bubbling up to document
+            sidebar.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    if (closeBtn && sidebar) {
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+    }
+
+    // Profile Dropdown Menu
+    if (profileBtn && profileDropdown) {
+        profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('show');
+        });
+    }
+    
+    // Close menus when clicking outside
+    document.addEventListener('click', (e) => {
+        // Close sidebar
+        if (sidebar && sidebar.classList.contains('open') && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+            sidebar.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close profile dropdown
+        if (profileDropdown && profileDropdown.classList.contains('show') && !profileBtn.contains(e.target)) {
+             profileDropdown.classList.remove('show');
+        }
+    });
+
+    // Search button functionality
+    const searchButton = document.getElementById('aiSearchButton');
+    if (searchButton) {
+        searchButton.addEventListener('click', function() {
+            const searchInput = document.getElementById('aiSearchInput');
+            const customAlert = document.getElementById('custom-alert');
+            if (searchInput && searchInput.value.trim() !== '' && customAlert) {
+                customAlert.textContent = 'Searching for: ' + searchInput.value;
+                customAlert.classList.add('show');
+                setTimeout(() => {
+                    customAlert.classList.remove('show');
+                }, 3000);
+            }
+        });
+    }
+
+    // Specialization tag buttons functionality
+    const tagsContainer = document.querySelector('.tags-container');
+    if (tagsContainer) {
+        const tagButtons = tagsContainer.querySelectorAll('button');
+        tagButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                tagButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to the clicked button
+                this.classList.add('active');
+                
+                const searchInput = document.getElementById('aiSearchInput');
+                if (searchInput) {
+                    if (this.textContent === 'All') {
+                        searchInput.value = ''; // Clear input if 'All' is clicked
+                        searchInput.placeholder = 'Search by skill, role, or keyword';
+                    } else {
+                        searchInput.value = this.textContent; // Set input to button text
+                    }
+                }
+            });
+        });
+    }
+
+
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = e.target.querySelector('.newsletter-input');
+            const customAlert = document.getElementById('custom-alert');
+            if (emailInput && emailInput.value && customAlert) {
+                customAlert.textContent = 'Thank you for subscribing!';
+                customAlert.classList.add('show');
+                setTimeout(() => {
+                    customAlert.classList.remove('show');
+                }, 3000);
+                emailInput.value = '';
+            }
+        });
+    }
+
+    // Smooth hover animations for footer links
+    document.querySelectorAll('.footer-links a').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transition = 'transform 0.3s ease';
+            this.style.transform = 'translateX(8px)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+        });
+    });
+});
+</script>
+    
+</body>
+</html>

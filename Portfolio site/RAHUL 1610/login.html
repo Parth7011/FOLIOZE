@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Folioze</title>
+  <link rel="icon" type="image/png" href="/Parth/logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: all 0.3s ease-in-out;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      background: linear-gradient(135deg, #fdf6eb 0%, #f1e2c8 100%);
+      overflow-x: hidden;
+      position: relative;
+      animation: fadeInBody 1s ease-in;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.5;
+      z-index: 0;
+    }
+    body::before {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #f8dcbf, transparent 70%);
+      top: -100px;
+      left: -100px;
+    }
+    body::after {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #e7d3af, transparent 70%);
+      bottom: -120px;
+      right: -120px;
+    }
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fffcf3;
+      padding: 0.6rem 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.15),
+                  0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e5d7c3;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 10;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-links-left, .nav-links-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links-left { flex-grow: 1; }
+    .nav-links-right { flex-grow: 1; justify-content: flex-end; }
+    .logo { flex-grow: 2; text-align: center; cursor: pointer; }
+    .logo h1 { font-size: 2rem; font-weight: 800; color: #3b2f24; }
+    .logo p { font-size: 14px; color: #5a4a3e; margin-top: 5px; font-weight: 500; }
+
+    .nav-links-left > a,
+    .nav-links-right > a {
+      font-size: 18px;
+      color: #5a4a3e;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-links-left > a:hover,
+    .nav-links-right > a:hover {
+      color: #3b2f24;
+      transform: translateY(-2px);
+    }
+
+    .get-started-btn {
+      background-color: #3b2f24;
+      color: #f0e6d2;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    .get-started-btn:hover {
+      background-color: #5a4a3e;
+      transform: translateY(-3px);
+    }
+
+    .menu-btn {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #3b2f24;
+      margin-left: 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      height: calc(100vh - 160px);
+      position: relative;
+      z-index: 5;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .left-section {
+      flex: 1;
+      background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 50px;
+      position: relative;
+      color: white;
+    }
+    .left-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .left-section > * { position: relative; z-index: 1; }
+    .left-section .logo { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+    .left-section .tagline { font-size: 18px; margin-bottom: 40px; color: rgba(255,255,255,0.9); }
+
+    .right-section {
+      flex: 1;
+      background: white;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-title { font-size: 28px; margin-bottom: 35px; color: #2d3436; font-weight: 700; }
+    .form-group { margin-bottom: 25px; }
+    .form-group label { display: block; margin-bottom: 10px; font-weight: 600; color: #2d3436; font-size: 16px; }
+    .input-wrapper { display: flex; align-items: center; border: 2px solid #e0e0e0; border-radius: 10px; padding: 12px 15px; transition: all 0.3s; }
+    .input-wrapper:focus-within { border-color: #c8b694; box-shadow: 0 0 0 4px rgba(217,198,165,0.4); }
+    .input-wrapper span { font-size: 20px; margin-right: 10px; }
+    .input-wrapper input { flex: 1; border: none; outline: none; font-size: 16px; color: #2d3436; }
+    .toggle-password { cursor: pointer; font-size: 18px; color: #636e72; margin-left: 10px; }
+
+    .options-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; font-size: 15px; color: #636e72; }
+    .options-row label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 17px;
+      background: #d9c6a5;
+      border: none;
+      border-radius: 10px;
+      color: #2d3436;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(217,198,165,0.4);
+    }
+    .submit-btn:hover {
+      background: #c8b694;
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background: #3b2f24;
+      color: #f5e9d3;
+      width: 1000%;
+      
+      padding: 60px 20px 20px;
+      /* margin-top: 40px; */
+      position: relative;
+      top: 20rem;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;
+      align-items: start;
+    }
+
+    .footer-logo h2 { font-size: 26px; margin-bottom: 15px; color: #ffffff; }
+    .footer-logo p { font-size: 15px; line-height: 1.6; }
+
+    .footer-contact p { margin: 6px 0; font-size: 15px; }
+
+    .footer-section h3 { margin-bottom: 15px; font-size: 18px; font-weight: bold; }
+    .footer-section ul { list-style: none; }
+    .footer-section ul li { margin-bottom: 10px; }
+    .footer-section ul li a { text-decoration: none; color: #f5e9d3; transition: 0.3s; }
+    .footer-section ul li a:hover { color: #d9c6a5; transform: translateX(5px); }
+
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      gap: 12px;
+    }
+    .social-icons a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #2a211a;
+      color: #f5e9d3;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+    .social-icons a:hover {
+      background: #d9c6a5;
+      color: #3b2f24;
+      transform: scale(1.1);
+    }
+
+    .subscribe-box input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 10px;
+      outline: none;
+      background: #4a3a2e;
+      color: #fff;
+    }
+    .subscribe-box input::placeholder { color: #d1c5b0; }
+    .subscribe-box button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #e6cfb0;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .subscribe-box button:hover {
+      background: #d9c6a5;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #d1c5b0;
+      border-top: 1px solid #5a4a3e;
+      padding-top: 15px;
+    }
+
+    /* Popup modal */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .popup-content h2 {
+      margin-bottom: 15px;
+      color: #3b2f24;
+    }
+    .popup-content p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+    .close-btn {
+      background: #3b2f24;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .close-btn:hover {
+      background: #5a4a3e;
+    }
+
+    /* Scroll-to-top */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 99;
+      background-color: #d9c6a5;
+      color: #3b2f24;
+      border: none;
+      outline: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: 0.3s;
+    }
+    #scrollTopBtn:hover {
+      background-color: #c8b694;
+      transform: translateY(-3px);
+    }
+
+    /* Mobile menu animation */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: #fff;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      gap: 12px;
+      z-index: 100;
+      animation: slideDown 0.3s ease forwards;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container { flex-direction: column; height: auto; }
+      .left-section, .right-section { flex: none; width: 100%; min-height: 300px; }
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .nav-links-left, .nav-links-right { display: none; }
+      .menu-btn { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-links-left">
+    <a href="#">Services</a>
+    <a href="#">Features</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="logo">
+    <h1>Folioze</h1>
+  </div>
+
+  <div class="nav-links-right">
+    <a href="#">About</a>
+    <!-- <a href="login.html">Sign In</a> -->
+    <a href="signup.html"><button class="get-started-btn">Get Started</button></a>
+    <div class="menu-btn"><i class="fas fa-bars"></i></div>
+  </div>
+</header>
+
+<!-- Mobile Dropdown -->
+<div class="mobile-menu">
+  <a href="#">Services</a>
+  <a href="#">Features</a>
+  <a href="#">Blog</a>
+  <a href="#">Contact</a>
+  <a href="#">About</a>
+  <!-- <a href="login.html">Sign In</a> -->
+  <a href="signup.html">Get Started</a>
+</div>
+
+<div class="container">
+  <div class="left-section">
+    <div class="logo">Folioze</div>
+    <div class="tagline">A smarter way to get noticed in the creative world</div>
+  </div>
+
+  <div class="right-section">
+    <h2 class="form-title">Login to Your Account</h2>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-email">EMAIL ADDRESS</label>
+        <div class="input-wrapper">
+          <span>📧</span>
+          <input type="email" id="login-email" placeholder="Enter your email address" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="login-password">PASSWORD</label>
+        <div class="input-wrapper">
+          <span>🔒</span>
+          <input type="password" id="login-password" placeholder="Enter your password" required>
+          <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
+        </div>
+      </div>
+
+      <div class="options-row">
+        <label><input type="checkbox" id="keep-logged-in"> Keep me logged in</label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="submit-btn">LOGIN</button>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2>Folioze</h2>
+      <p>Empowering creators to showcase their best work and connecting talent with opportunities through beautiful, professional portfolios.</p>
+      <div class="footer-contact">
+        <p><i class="fa fa-envelope"></i> hello@folioze.com</p>
+        <p><i class="fa fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fa fa-map-marker-alt"></i> San Francisco, CA</p>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h3>Platform</h3>
+      <ul>
+        <li><a href="#">Browse Portfolios</a></li>
+        <li><a href="#">For Creators</a></li>
+        <li><a href="#">For Recruiters</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Features</h3>
+      <ul>
+        <li><a href="#">Creator Tools</a></li>
+        <li><a href="#">Portfolio Builder</a></li>
+        <li><a href="#">Recruiter Portal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Templates</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Stay Updated</h3>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Enter your email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Folioze. All rights reserved.
+  </div>
+</footer>
+
+<!-- Scroll-to-top button -->
+<!-- <button onclick="scrollToTop()" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button> -->
+
+<!-- Popup Modal -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2>Login Successful 🎉</h2>
+    <p>Welcome back to Folioze!</p>
+    <button class="close-btn" id="closePopup">Close</button>
+  </div>
+</div>
+
+<script>
+  // Toggle password visibility
+  const togglePassword = document.getElementById('togglePassword');
+  const passwordInput = document.getElementById('login-password');
+  togglePassword.addEventListener('click', function () {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    this.classList.toggle('fa-eye');
+    this.classList.toggle('fa-eye-slash');
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Popup logic
+  const loginForm = document.getElementById('login-form');
+  const popup = document.getElementById('popup');
+  const closePopup = document.getElementById('closePopup');
+  window.addEventListener('DOMContentLoaded', function() {
+    popup.style.display = 'none';
+  });
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value.trim();
+    if (!email || !password) {
+      alert('Please fill in both email and password.');
+      return;
+    }
+    popup.style.display = 'flex';
+  });
+  closePopup.addEventListener('click', function() {
+    popup.style.display = 'none';
+  });
+  window.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+  // Scroll to top button
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  window.onscroll = function() { scrollFunction() };
+  function scrollFunction() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  }
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
+
+</body>
+</html>

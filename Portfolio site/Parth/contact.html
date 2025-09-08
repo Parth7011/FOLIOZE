@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Folioze</title>
+     <link rel="icon" type="image/png" href="logo.png">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts: Inter and Archivo Black -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="nav-links-left">
+            <a href="#">Services</a>
+            <a href="#">Features</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="logo">
+            <h1>Folioze</h1>
+        </div>
+        <div class="nav-links-right">
+            <a href="#">About</a>
+            <a href="#"><button class="get-started-btn">Get Started</button></a>
+            <div class="profile-menu">
+                <button class="profile-btn" id="menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="profile-dropdown-content" id="profileDropdown">
+                    <a href="#"><i class="icon fa-solid fa-user"></i> Profile</a>
+                    <a href="#"><i class="icon fa-solid fa-gauge-high"></i> Dashboard</a>
+                    <a href="#"><i class="icon fa-solid fa-folder-open"></i> My Projects</a>
+                    <a href="#"><i class="icon fa-solid fa-gear"></i> Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="icon fa-solid fa-right-from-bracket"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="contact-container fade-in-section">
+            <div class="contact-info-panel">
+                <div>
+                    <h1 class="contact-title">CONTACT</h1>
+                    <p class="contact-subtitle">
+                        For any enquiries, or just to say hello, get in touch and contact us. We'd love to hear from you.
+                    </p>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <h3>New projects</h3>
+                            <p>Katharine Goldstein</p>
+                            <a href="mailto:kg@folioze.com">kg@folioze.com</a>
+                        </div>
+                        <div class="detail-item">
+                            <h3>General inquiries</h3>
+                            <a href="mailto:info@folioze.com">info@folioze.com</a>
+                            <p>+45 28 97 93 09</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Address</h3>
+                            <p>Snaregade 14,</p>
+                            <p>1205 København,</p>
+                            <p>Denmark</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Careers & Internships</h3>
+                            <a href="mailto:jobs@folioze.com">jobs@folioze.com</a>
+                        </div>
+                        <div class="detail-item" style="grid-column: span 2;">
+                            <h3>Follow us</h3>
+                            <div class="social-links">
+                                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#contactFormSection" class="get-in-touch-btn">Get In Touch</a>
+            </div>
+            <div class="contact-image-panel"></div>
+        </div>
+
+        <section id="contactFormSection" class="form-section fade-in-section">
+            <div class="form-container">
+                <h2 class="form-title">Send Us a Message</h2>
+                <div class="form-title-underline"></div>
+
+                <div id="successMessage" class="success-message">
+                    <strong>Success!</strong>
+                    <span>Your message has been sent. We'll get back to you soon.</span>
+                </div>
+
+                <form id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company (Optional)</label>
+                        <input type="text" id="company" name="company" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Tell us about your project or how we can help you..." class="form-textarea"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Dropdown Menu functionality
+        const menuBtn = document.getElementById('menuBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+
+        if (menuBtn && profileDropdown) {
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('show');
+            });
+        }
+    
+        document.addEventListener('click', (e) => {
+            if (profileDropdown && profileDropdown.classList.contains('show') && !menuBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                 profileDropdown.classList.remove('show');
+            }
+        });
+
+        // Contact Form functionality
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const firstName = contactForm.querySelector('#firstName').value;
+                const lastName = contactForm.querySelector('#lastName').value;
+                const email = contactForm.querySelector('#email').value;
+                const message = contactForm.querySelector('#message').value;
+
+                if (!firstName || !lastName || !email || !message) {
+                    console.error('Please fill out all required fields.');
+                    return;
+                }
+
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerHTML;
+
+                submitButton.innerHTML = `
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="height: 1.25rem; width: 1.25rem; margin-right: 0.75rem;">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                `;
+                submitButton.disabled = true;
+
+                setTimeout(() => {
+                    successMessage.classList.add('show');
+                    this.reset();
+                    
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 5000);
+
+                }, 1500);
+            });
+        }
+
+        // Fade-in on scroll functionality
+        const sectionsToFade = document.querySelectorAll('.fade-in-section');
+
+        if (sectionsToFade) {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sectionsToFade.forEach(section => {
+                observer.observe(section);
+            });
+        }
+    </script>
+</body>
+</html>
+

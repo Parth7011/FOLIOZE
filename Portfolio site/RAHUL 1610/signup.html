@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Folioze</title>
+  <link rel="icon" type="image/png" href="/Parth/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+    body {
+      background: linear-gradient(135deg, #fdf6e9 0%, #f5e6d3 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: bodyFadeIn 1s ease forwards;
+    }
+
+    @keyframes bodyFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .header {
+      width: 95%;
+      margin: 15px auto;
+      background: #fdfbf5;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-left a, .nav-right a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      color: #3d2f25;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-left a:hover, .nav-right a:hover {
+      color: #d2b48c;
+      transform: scale(1.1);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 800;
+      color: #3d2f25;
+    }
+    .logo small {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: -2px;
+    }
+
+    .btn-get-started {
+      padding: 8px 20px;
+      border-radius: 20px;
+      background: #3d2f25;
+      color: #fff !important;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .btn-get-started:hover {
+      background: #5a4637;
+      transform: scale(1.05);
+    }
+
+    .hamburger {
+      font-size: 20px;
+      cursor: pointer;
+      margin-left: 12px;
+      transition: transform 0.3s ease;
+    }
+    .hamburger:hover {
+      transform: scale(1.1);
+    }
+
+    .container {
+      width: 95%;
+      max-width: 950px;
+      height: 85vh;
+      display: flex;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      background: white;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .left-section {
+      flex: 1;
+      background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 25px;
+      position: relative;
+      color: white;
+      animation: slideInLeft 1s ease forwards;
+    }
+
+    .left-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .left-content {
+      position: relative;
+      z-index: 1;
+      max-width: 80%;
+    }
+
+    .left-content h1 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .left-content p {
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .left-content h2 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .right-section {
+      flex: 1;
+      background: white;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: slideInRight 1s ease forwards;
+    }
+
+    .form-title { font-size: 20px; margin-bottom: 16px; font-weight: 700; text-align: center; }
+    .form-group { margin-bottom: 14px; width: 100%; max-width: 320px; }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .input-with-icon { position: relative; width: 100%; }
+    .input-with-icon input {
+      width: 100%;
+      height: 44px;
+      padding: 0 42px 0 44px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: all 0.3s ease;
+    }
+    .input-with-icon input:focus {
+      outline: none;
+      border-color: #d2b48c;
+      box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.3);
+    }
+    .emoji {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 17px;
+      color: #6b587e;
+      pointer-events: none;
+    }
+    .toggle-eye {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 16px;
+      color: #888;
+    }
+    .strength-meter {
+      height: 6px;
+      border-radius: 4px;
+      margin-top: 6px;
+      background: #e0e0e0;
+      overflow: hidden;
+    }
+    .strength-meter-fill {
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+    .strength-text {
+      font-size: 11px;
+      margin-top: 3px;
+      font-weight: 600;
+    }
+    .error-message {
+      font-size: 12px;
+      color: red;
+      margin-top: 4px;
+    }
+    .terms {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      margin: 10px 0 16px;
+    }
+    .terms input {
+      accent-color: #d2b48c;
+    }
+    .submit-btn {
+      width: 100%;
+      max-width: 320px;
+      padding: 11px;
+      background: #d2b48c;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: #c19a6b;
+      transform: scale(1.05);
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 12px 0;
+      font-size: 12px;
+    }
+    .divider span {
+      flex: 1;
+      height: 1px;
+      background-color: #eaeaea;
+    }
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #eaeaea;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .social-btn:hover {
+      background: #f5f5f5;
+      transform: scale(1.1);
+    }
+    .switch-form {
+      text-align: center;
+      font-size: 13px;
+    }
+    .switch-form a {
+      text-decoration: none;
+      color: #3d2f25;
+      transition: color 0.3s ease;
+    }
+    .switch-form a:hover {
+      color: #d2b48c;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 320px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      animation: slideInUp 0.3s ease forwards;
+    }
+    .modal-content h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #3d2f25;
+    }
+    .modal-content p {
+      font-size: 14px;
+      margin-bottom: 16px;
+      color: #555;
+    }
+    .close-btn {
+      padding: 8px 18px;
+      background: #d2b48c;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .close-btn:hover {
+      background: #c19a6b;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------------- Footer CSS ---------------- */
+    .footer {
+      background-color: #3b2f2f;
+      color: #d3c0a6;
+      padding: 40px 20px;
+      width: 100%;
+      animation: fadeInUp 1s ease forwards;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-left {
+      flex: 2;
+      min-width: 250px;
+    }
+    .footer-links {
+      flex: 3;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      min-width: 300px;
+    }
+    .footer-section {
+      flex: 1 1 150px;
+      margin: 10px;
+    }
+    .footer-stay {
+      flex: 1;
+      min-width: 200px;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    .footer-section h3,
+    .footer-stay h3 {
+      margin-bottom: 15px;
+    }
+    .footer-section a {
+      display: block;
+      color: #d3c0a6;
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    .footer-section a:hover {
+      text-decoration: underline;
+      color: #fff;
+      transform: scale(1.05);
+    }
+    .footer-section p {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .social-icons a {
+      margin-right: 10px;
+      color: #d3c0a6;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    .social-icons a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      border-top: 1px solid #4a3c3c;
+      padding-top: 10px;
+      animation: fadeIn 1s ease forwards;
+    }
+    .footer-stay form {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer-stay input {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      transition: box-shadow 0.3s ease;
+    }
+    .footer-stay input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #d2b48c;
+    }
+    .footer-stay button {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      background-color: #d3c0a6;
+      color: #3b2f2f;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .footer-stay button:hover {
+      background-color: #c2ae88;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">` `
+    <div class="nav-left">
+      <a href="#">SERVICES</a>
+      <a href="#">FEATURES</a>
+      <a href="#">BLOG</a>
+      <a href="#">CONTACT</a>
+    </div>
+    <div class="logo">
+      Folioze
+      <small></small>
+    </div>
+    <div class="nav-right">
+      <a href="#">ABOUT</a>
+      <!-- <a href="login.html">SIGN IN</a> -->
+      <a href="signup.html" class="btn-get-started">Get Started</a>
+      <!-- <span class="hamburger"><i class="fa fa-bars"></i></span> -->
+    </div>
+  </div>
+
+  <!-- SIGNUP BOX -->
+  <div class="container">
+    <div class="left-section">
+      <div class="left-content">
+        <h1>Folioze</h1>
+        <p>A smarter way to get noticed in the creative world</p>
+        <h2>Discover the Beauty of Nature</h2>
+      </div>
+    </div>
+    <div class="right-section">
+      <form id="signup-form" style="width:100%;max-width:340px;">
+        <h2 class="form-title">Create Your Account</h2>
+        <div class="form-group">
+          <label for="signup-first">FIRST NAME</label>
+          <div class="input-with-icon">
+            <span class="emoji">👤</span>
+            <input type="text" id="signup-first" placeholder="Enter your first name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="signup-last">LAST NAME</label>
+          <div class="input-with-icon">
+            <span class="emoji">👤</span>
+            <input type="text" id="signup-last" placeholder="Enter your last name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="signup-email">EMAIL ADDRESS</label>
+          <div class="input-with-icon">
+            <span class="emoji">📧</span>
+            <input type="email" id="signup-email" placeholder="Enter your email address" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">PASSWORD</label>
+          <div class="input-with-icon">
+            <span class="emoji">🔒</span>
+            <input type="password" id="signup-password" placeholder="Create a password" required>
+            <span class="toggle-eye" id="toggle-password"><i class="fa-regular fa-eye" id="eye-password"></i></span>
+          </div>
+          <div class="strength-meter"><div class="strength-meter-fill"></div></div>
+          <div class="strength-text"></div>
+        </div>
+        <div class="form-group">
+          <label for="signup-confirm">CONFIRM PASSWORD</label>
+          <div class="input-with-icon">
+            <span class="emoji">🔒</span>
+            <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
+            <span class="toggle-eye" id="toggle-confirm"><i class="fa-regular fa-eye" id="eye-confirm"></i></span>
+          </div>
+          <div class="error-message" id="confirm-error"></div>
+        </div>
+        <div class="terms">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+        </div>
+        <button type="submit" class="submit-btn">SIGN UP</button>
+        <div class="divider"><span></span><p>Or sign up with</p><span></span></div>
+        <div class="social-login">
+          <div class="social-btn"><i class="fab fa-google"></i></div>
+          <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+          <div class="social-btn"><i class="fab fa-twitter"></i></div>
+        </div>
+        <div class="switch-form">Already have an account? <a href="login.html">Login</a></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- POPUP MODAL -->
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <h3>🎉 Signup Successful!</h3>
+      <p>Welcome to Folioze. Your account has been created successfully.</p>
+      <button class="close-btn" id="closeModal">OK</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <h3>Folioze</h3>
+        <p>Empowering creators to showcase their best work and connecting talent with opportunities through beautiful, professional portfolios.</p>
+        <p><i class="fa fa-envelope"></i> hello@folioze.com</p>
+        <p><i class="fa fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fa fa-map-marker-alt"></i> San Francisco, CA</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-section">
+          <h3>Platform</h3>
+          <a href="#">Browse Portfolios</a>
+          <a href="#">For Creators</a>
+          <a href="#">For Recruiters</a>
+        </div>
+        <div class="footer-section">
+          <h3>Features</h3>
+          <a href="#">Creator Tools</a>
+          <a href="#">Portfolio Builder</a>
+          <a href="#">Recruiter Portal</a>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <a href="#">Blog</a>
+          <a href="#">Community</a>
+          <a href="#">Templates</a>
+        </div>
+        <div class="footer-section">
+          <h3>Company</h3>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer-stay">
+        <h3>Stay Updated</h3>
+        <form>
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Folioze. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('successModal').style.display = 'none';
+    });
+
+    document.getElementById("toggle-password").addEventListener("click", function(){
+      const pass = document.getElementById("signup-password");
+      const eye = document.getElementById("eye-password");
+      if(pass.type === "password"){
+        pass.type = "text";
+        eye.classList.remove("fa-eye");
+        eye.classList.add("fa-eye-slash");
+      }else{
+        pass.type = "password";
+        eye.classList.remove("fa-eye-slash");
+        eye.classList.add("fa-eye");
+      }
+    });
+
+    document.getElementById("toggle-confirm").addEventListener("click", function(){
+      const pass = document.getElementById("signup-confirm");
+      const eye = document.getElementById("eye-confirm");
+      if(pass.type === "password"){
+        pass.type = "text";
+        eye.classList.remove("fa-eye");
+        eye.classList.add("fa-eye-slash");
+      }else{
+        pass.type = "password";
+        eye.classList.remove("fa-eye-slash");
+        eye.classList.add("fa-eye");
+      }
+    });
+
+    const passInput = document.getElementById("signup-password");
+    const strengthFill = document.querySelector(".strength-meter-fill");
+    const strengthText = document.querySelector(".strength-text");
+
+    passInput.addEventListener("input", function(){
+      let val = passInput.value;
+      let strength = 0;
+      if(val.length >= 8) strength++;
+      if(/[A-Z]/.test(val)) strength++;
+      if(/[0-9]/.test(val)) strength++;
+      if(/[^A-Za-z0-9]/.test(val)) strength++;
+
+      let width = strength * 25;
+      strengthFill.style.width = width + "%";
+      if(strength <= 1) {
+        strengthFill.style.background = "red";
+        strengthText.textContent = "Weak";
+      } else if(strength == 2){
+        strengthFill.style.background = "orange";
+        strengthText.textContent = "Fair";
+      } else if(strength == 3){
+        strengthFill.style.background = "yellowgreen";
+        strengthText.textContent = "Good";
+      } else if(strength == 4){
+        strengthFill.style.background = "green";
+        strengthText.textContent = "Strong";
+      }
+    });
+
+    const confirmInput = document.getElementById("signup-confirm");
+    const errorMsg = document.getElementById("confirm-error");
+    confirmInput.addEventListener("input", function(){
+      if(confirmInput.value !== passInput.value){
+        errorMsg.textContent = "Passwords do not match";
+      } else {
+        errorMsg.textContent = "";
+      }
+    });
+
+    const form = document.getElementById("signup-form");
+    const modal = document.getElementById("successModal");
+    const closeModal = document.getElementById("closeModal");
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if(confirmInput.value !== passInput.value){
+        errorMsg.textContent = "Passwords do not match";
+        return;
+      }
+      modal.style.display = "flex";
+    });
+
+    closeModal.addEventListener("click", function(){
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", function(e){
+      if(e.target === modal){
+        modal.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
